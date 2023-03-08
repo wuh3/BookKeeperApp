@@ -1,9 +1,0 @@
-close all
-clc
-clear all
-
-parts = ["Tires", "Mixer", "Body Casting", "Cab Casting", "Windshield", "Axles", "Rims", "Screw", "Box", "Labor", "Master Pack"];
-
-for i = 1:length(parts)
-    
-end
