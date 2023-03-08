@@ -1,0 +1,20 @@
+function success = purchaseParts(idx, quantity)
+    data = load("inventoriesData.mat").data;
+    price = str2double(data{idx, 2});
+    value = price * quantity;
+
+    %% Calculate resulting values and update inventory
+    newQuant = str2double(data{idx, 3}) + quantity;
+    newTotal = str2double(data{idx, 4}) + value;
+    row = [newQuant, newTotal];
+    data{idx, 3} = row{1};
+    data{idx, 4} = string();
+    data{idx, 5} = 'O';
+    save inventoriesData.mat data
+    %% Update PO history
+    
+
+
+    success = true;
+end
+
