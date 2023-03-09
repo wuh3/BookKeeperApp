@@ -25,7 +25,7 @@ function success = createInvoice(idx,units)
             quant = str2double(data{i, 3});
             quant = quant - units * number_required(i);
             value = price * quant;
-            part = [data{i, 0}, price, quant, value, data{i, 5}];
+            part = [data{i, 1}, price, quant, value, data{i, 5}, ""];
             for j = 1:col
                 data{i, j} = part{j};
             end
@@ -33,6 +33,7 @@ function success = createInvoice(idx,units)
         save inventoriesData.mat data
     catch ME
         warning("Failed to create invoice!");
+        disp(ME)
         success = false;
         return;
     end
@@ -42,8 +43,10 @@ function success = createInvoice(idx,units)
         data = load('incomeStatementData.mat').data;
         data.sales = data.sales + sales;
         data.COG = data.COG + units * cogs(1);
+        save incomeStatementData.mat data
     catch ME
         warning("Fail to update income statement while creating invoice");
+        disp(ME)
         success = false;
         return;
 
