@@ -1,6 +1,7 @@
 function success = createInvoice(idx,units)
     %% Create invoice and update inventory
     number_required = [8, 1, 1, 1, 1, 4, 8, 50, 1, 5, 1];
+    disp(idx)
     try
         cogs = load('cogData.mat').data;
         units_avail = cogs(2);
@@ -10,8 +11,8 @@ function success = createInvoice(idx,units)
             return;
     
         end
-    
-        price = cogs(1) * 2;
+        vendors = load('vendorsData.mat').data;
+        price = vendors{idx, 3};
         sales = price * units;
         new_quantity = units_avail - units;
         new_total_cog = new_quantity * cogs(1);
