@@ -5,10 +5,14 @@ function success = insertEmployee(cellArr)
         data = load("employeesData.mat").data;
         data(end + 1, :) = cellArr;
         save employeesData data;
-        
+
+        %% Open up a payroll slot
+        collection = load('payrollEventsData.mat').collection;
+        collection(end+1).data = cell(0, 8);
+        save payrollEventsData.mat collection
     catch ME
         warning('Insert employee failed.');
-        disp(ME.identifier)
+        disp(ME.message)
         success = false;
         return;
     end
