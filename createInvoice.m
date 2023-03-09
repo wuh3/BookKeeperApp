@@ -11,8 +11,8 @@ function success = createInvoice(idx,units)
             return;
     
         end
-        vendors = load('vendorsData.mat').data;
-        price = vendors{idx, 3};
+        customer = load('customersData.mat').data;
+        price = customer{idx, 9};
         sales = price * units;
         new_quantity = units_avail - units;
         new_total_cog = new_quantity * cogs(1);

@@ -3,8 +3,7 @@ try
     is = load("incomeStatementData.mat").data;
     inv = load("inventoriesData.mat").data;
     data = load("balanceSheetData.mat").data;
-    cash = data.receivable + data.cash - data.account_payable;
-    data.account_payable = 0;
+    cash = double(is.sales) - ;
     [row, ~] = size(inv);
     total = 0;
     for i = 1:row
@@ -28,8 +27,8 @@ try
         total = total + value;
     end
     po_Payable = total;
-    account_payable = is.payroll - is.payroll_withholding;
-    receivable = double(is.sales);
+    account_payable = is.receivable;
+    receivable = is.payroll - is.payroll_withholding;
     total_current_liabilities = po_Payable + account_payable;
     total_current_assets = cash + receivable + inventory;
     total_assets = total_current_assets + total_fixed_assets;
