@@ -36,6 +36,7 @@ function success = payEmployee(idx, bonus)
 
     catch ME
         warning("Fail to pay employee, check your employee data.");
+        disp(ME.message)
         success = false;
         return;
     end
