@@ -24,7 +24,7 @@ try
     [row, ~] = size(poHist);
     total = 0;
     for i = 1:row
-        value = poHist{i, 7};
+        value = str2double(poHist{i, 7});
         total = total + value;
     end
     po_Payable = total;

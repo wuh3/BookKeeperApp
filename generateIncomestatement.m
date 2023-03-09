@@ -18,7 +18,14 @@ try
     disp(payroll)
     disp(payroll_withholding)
     bills = 1250;
-    annual_expenses = 13750;
+    poHist = load('poHistoriesData.mat').data;
+    [row, ~] = size(poHist);
+    total = 0;
+    for i = 1:row
+        value = str2double(poHist{i, 7});
+        total = total + value;
+    end
+    annual_expenses = total;
     gross_profit = sales - COG;
     total_expenses = payroll - payroll_withholding + bills + annual_expenses;
     operating_income = gross_profit - total_expenses;
