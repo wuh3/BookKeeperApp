@@ -34,6 +34,10 @@ function success = payEmployee(idx, bonus)
         collection(idx).data(end + 1, :) = {employee{2}, round(employee{end}, 2), bonus, round(federal_perc, 2), round(state_perc, 2), round(social_perc, 2), round(medicare_perc, 2), round(take_home, 2)};
         save payrollEventsData.mat collection
 
+        data = load("balanceSheetData.mat").data;
+        data.account_payable = data.account_payable + salary - federal_perc;
+        save balanceSheetData.mat data
+
     catch ME
         warning("Fail to pay employee, check your employee data.");
         disp(ME.message)

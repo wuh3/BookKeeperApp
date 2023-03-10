@@ -28,6 +28,10 @@ try
     end
     save poHistoriesData.mat data
 
+    data = load("balanceSheetData.mat").data;
+    data.po_payable = data.po_payable + value;
+    save balanceSheetData.mat data
+
 catch ME
     warning("Purchasing Parts Failed!");
     success = false;

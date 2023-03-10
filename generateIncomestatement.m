@@ -15,8 +15,6 @@ try
             payroll_withholding = payroll_withholding + hist{j, 4};
         end
     end
-    disp(payroll)
-    disp(payroll_withholding)
     bills = 1250;
     poHist = load('poHistoriesData.mat').data;
     [row, ~] = size(poHist);

@@ -20,14 +20,14 @@ try
     data = load("balanceSheetData.mat").data;
     inv = load("inventoriesData.mat").data;
     [row, ~] = size(inv);
-    total = 0;
-    for i = 1:row
-        value = str2double(inv{i, 4});
-        total = total + value;
-    end
+        total = 0;
+        for i = 1:row
+            value = str2double(inv{i, 4});
+            total = total + value;
+        end
          
     data.inventory = total;
-    save balanceSheetData.mat data
+    save balanceSheetData.mat da
     
 catch ME
     warning("Failed to generate cogs data.");

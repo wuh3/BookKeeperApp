@@ -16,6 +16,7 @@ for i = 1:length(parts)
     end
 end
 save inventoriesData.mat data
+
 %% Calculate COGS
 
 generateCogs();

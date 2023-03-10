@@ -2,6 +2,7 @@ function success = createInvoice(idx,units)
     %% Create invoice and update inventory
     number_required = [8, 1, 1, 1, 1, 4, 8, 50, 1, 5, 1];
     disp(idx)
+    s = 0;
     try
         cogs = load('cogData.mat').data;
         units_avail = cogs(2);
@@ -14,6 +15,7 @@ function success = createInvoice(idx,units)
         customer = load('customersData.mat').data;
         price = customer{idx, 9};
         sales = price * units;
+        s = sales;
         new_quantity = units_avail - units;
         new_total_cog = new_quantity * cogs(1);
         data = [cogs(1), new_quantity, new_total_cog];
@@ -45,6 +47,19 @@ function success = createInvoice(idx,units)
         data.sales = data.sales + sales;
         data.COG = data.COG + units * cogs(1);
         save incomeStatementData.mat data
+    catch ME
+        warning("Fail to update income statement while creating invoice");
+        disp(ME)
+        success = false;
+        return;
+
+    end
+
+    %% Update balance sheet
+    try 
+        data = load('balanceSheetData.mat').data;
+        data.cash = data.cash + s;
+        save balanceSheetData.mat data
     catch ME
         warning("Fail to update income statement while creating invoice");
         disp(ME)
