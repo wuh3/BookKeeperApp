@@ -30,6 +30,7 @@ try
 
     data = load("balanceSheetData.mat").data;
     data.po_payable = data.po_payable + value;
+    data.inventory = data.inventory + value;
     save balanceSheetData.mat data
 
 catch ME

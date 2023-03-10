@@ -43,7 +43,7 @@ try
         data.furniture = furniture;
         data.total_fixed_assets = total_fixed_assets;
         data.total_assets = total_assets;
-        data.po_payable = po_Payable;
+        data.po_payable = 0;
         data.account_payable = account_payable;
         data.total_current_liability = total_current_liabilities;
         data.mortgage = mortgage;
@@ -62,15 +62,15 @@ try
         data.equipment = data.equipment;
         data.furniture = data.furniture;
         data.total_fixed_assets = data.building + data.equipment + data.furniture;
-        data.total_assets = data.total_assets;
+        data.total_assets = data.total_current_assets + data.total_fixed_assets;
         data.po_payable = data.po_payable;
         data.account_payable = data.account_payable;
         data.total_current_liability = data.po_payable + data.account_payable;
         data.mortgage = data.mortgage;
         data.total_long_term_debt = data.mortgage;
-        data.total_liabilities = data.total;
-        data.net_worth = data.net_worth;
-        data.tlnw = data.tlnw;
+        data.total_liabilities = data.total_current_liability + data.total_long_term_debt;
+        data.net_worth = data.total_assets - data.total_liabilities;
+        data.tlnw = data.net_worth + data.total_liabilities;
         data.period = data.period;
         save balanceSheetData.mat data
     end

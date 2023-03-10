@@ -35,7 +35,7 @@ try
     
         
         data.cash = cash;
-        data.receivable = receivable;
+        data.receivable = 0;
         data.inventory = inventory;
         data.total_current_assets = total_current_assets;
         data.building = building;
@@ -43,9 +43,9 @@ try
         data.furniture = furniture;
         data.total_fixed_assets = total_fixed_assets;
         data.total_assets = total_assets;
-        data.po_payable = po_Payable;
-        data.account_payable = account_payable;
-        data.total_current_liability = total_current_liabilities;
+        data.po_payable = 0;
+        data.account_payable = 0;
+        data.total_current_liability = 0;
         data.mortgage = mortgage;
         data.total_long_term_debt = total_long_term_debt;
         data.total_liabilities = total_liabilities;

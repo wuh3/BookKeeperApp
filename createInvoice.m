@@ -58,7 +58,7 @@ function success = createInvoice(idx,units)
     %% Update balance sheet
     try 
         data = load('balanceSheetData.mat').data;
-        data.cash = data.cash + s;
+        data.receivable = data.receivable + s;
         save balanceSheetData.mat data
     catch ME
         warning("Fail to update income statement while creating invoice");
